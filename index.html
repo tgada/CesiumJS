@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Cesium Assignment</title>
+    
+    <link rel="stylesheet" href="css/colorPick.css">
+    <link rel="stylesheet" href="css/colorPick.dark.theme.css" id="pagestyle"  id="pagestyle">
+
+    <!-- BootStrap Link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <style>
+        input[type=text]
+        {
+            border: none;
+            width: 160px;
+            text-align: center;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .picker {
+            border-radius: 5px;
+            width: 36px;
+            height: 36px;
+            margin: auto;
+            cursor: pointer;
+            -webkit-transition: all linear .2s;
+            -moz-transition: all linear .2s;
+            -ms-transition: all linear .2s;
+            -o-transition: all linear .2s;
+            transition: all linear .2s;
+            border: thin solid #eee;
+            display: inline-block;
+        }
+
+        .picker:hover {
+            transform: scale(1.1);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mt-5"></div>
+    <div class="container" style="box-shadow: 2px;">
+        <h1 style="margin-top: 5rem">Color Picker Assignment: Color Swatch made in CSS.</h1>
+        <br>
+        Pickup the color: <div class="picker" id="picker1"></div>
+        <!-- Default checked -->
+        <br><br>
+        Light Theme &nbsp;<label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+        </label> Dark Theme
+        <div class="changes">
+            <br>
+            <p>
+                Whenever you will select any color from the color picker, the
+                the color of the text will change.
+
+                You will be able to see the hex code of the color here: <input type="text" maxlength="7"  class="changecolor" id="hexcode">
+            </p>
+        </div>
+    </div>
+    
+    
+    <div class="container" style="box-shadow: 2px;">
+        <h1 style="margin-top: 5rem">Color Picker Assignment: Using Color Swatch of Browser.</h1>
+        <br>
+        Pickup the color: <input type="color" class="picker" id="Pickcolor">
+        <!-- Default checked -->
+        <div class="">
+            <br>
+            <p id="P1">
+                Whenever you will select any color from the color picker, the
+                the color of the text will change.
+
+                You will be able to see the hex code of the color here: <input type="text" maxlength="7"  class="changecolor" value="#000000" id="hexInput">
+            </p>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/colorPick.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        var x;
+        $("#picker1").colorPick({
+            'initialColor': '#8e44ad',
+            'palette': ["#1abc9c", "#16a085", "#2ecc71", "#27ae60", "#3498db", "#2980b9", "#9b59b6", "#8e44ad", "#34495e", "#2c3e50", "#f1c40f", "#f39c12", "#e67e22", "#d35400", "#e74c3c", "#c0392b", "#ecf0f1", "#34495e", "#2c3e50", "#f1c40f", "#f39c12", "#e67e22", "#d35400", "#e74c3c", "#c0392b", "#ecf0f1"],
+            'onColorSelected': function() {
+                console.log("The user has selected the color: " + this.color)
+                x = this.color;
+                this.element.css({
+                    'backgroundColor': this.color,
+                    'color': this.color
+                });
+                $(".changes").css('color', this.color);
+                document.getElementById('hexcode').value = this.color;
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var checkbox = document.querySelector('input[type="checkbox"]');
+
+            checkbox.addEventListener('change', function() {
+                if (checkbox.checked) {
+                    document.getElementById('pagestyle').setAttribute('href','css/colorPick.dark.theme.css');
+                    
+                } else {
+                    document.getElementById('pagestyle').setAttribute('href','css/.css');
+                }
+            });
+        });
+    </script>
+</body></html>
