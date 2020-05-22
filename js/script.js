@@ -6,3 +6,10 @@ colorInput.addEventListener('input',() =>{
             hexInput.value = color;
             document.getElementById('P1').style.color = color;
         });
+
+
+hexInput.addEventListener('input',() =>{
+    let color = hexInput.value;
+    document.getElementById('P1').style.color = color;
+    colorInput.value= hexInput.value;
+});
