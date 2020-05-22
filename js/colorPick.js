@@ -7,7 +7,6 @@
         });
 
     };
-
     $.colorPick = function (element, options) {
         options = options || {};
         this.options = $.extend({}, $.fn.colorPick.defaults, options);
@@ -35,8 +34,6 @@
     };
 
     $.fn.colorPick.defaults = {
-        'initialColor': '#3498db',
-        'paletteLabel': 'Default palette:',
         'allowRecent': true,
         'recentMax': 8,
         'onColorSelected': function() {
