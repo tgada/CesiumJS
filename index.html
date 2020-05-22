@@ -136,7 +136,7 @@
     <div class="container" style="box-shadow: 2px;">
         <h1 style="margin-top: 5rem">Color Picker Assignment: Using Color Swatch of Browser.</h1>
         <br>
-        Pickup the color: <input type="color" class="picker" id="Pickcolor">
+        Pickup the color: <input type="color" class="pickerChrome" id="Pickcolor">
         <!-- Default checked -->
         <div class="">
             <br>
@@ -169,6 +169,8 @@
                 document.getElementById('hexcode').value = this.color;
             }
         });
+        $(".picker").colorPick({ 'allowCustomColor': true });
+        
         document.addEventListener('DOMContentLoaded', function() {
             var checkbox = document.querySelector('input[type="checkbox"]');
 
